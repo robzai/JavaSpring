@@ -1,0 +1,14 @@
+acme:
+  enable: false
+  security:
+    username: hahaha
+    roles:
+      - USER
+      - ADMIN      
+---
+spring:
+  profiles: pro
+acme:
+  enable: true
+  security:
+    username: lalala

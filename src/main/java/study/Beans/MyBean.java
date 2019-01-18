@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyBean {
 
-    @Value("${name}")
+    @Value("${nameA.url}")
     public String name;
 
 }

@@ -29,14 +29,14 @@ public class StudyApplication {
 	@Autowired
 	TypeSafeConfiguration typeSafeConfiguration;
 	
-	@RequestMapping("/")    // our class is a web @Controller, so Spring considers it when handling incoming web requests.
+	@RequestMapping("/config_and_bean")    // our class is a web @Controller, so Spring considers it when handling incoming web requests.
 	String home() {		
 		return "Hello " + mybean.name;
 //		return "typesave config: " + typeSafeConfiguration.getSecurity().getUsername();
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(StudyApplication.class, args);
+		SpringApplication.run(StudyApplication.class, args);    // Spring Boot’s SpringApplication.run() method to launch an application
 	}
 
 }

@@ -6,13 +6,18 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.LdapShaPasswordEncoder;
 
+// Username:ben Password:benspassword. 
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
+			.csrf().disable()	// Spring security was waiting for csrf token for POST requests because CSRF protection is enabled by default in spring security.
 			.authorizeRequests()
+				.antMatchers("/people/**").permitAll() // So in order to make this line work, you must provide the csrf token in POST request 
+													   // OR you can temporarily turn CSRF protection off (but you should enable it again before going to production
+													   // as this is a serious attack)
 				.anyRequest().fullyAuthenticated()
 				.and()
 			.formLogin();

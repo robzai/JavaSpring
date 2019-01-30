@@ -9,13 +9,16 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import study.Beans.MyBean;
 import study.JPA.Customer;
 import study.JPA.CustomerRepository;
+import study.algorithm.ReverseInteger;
+import study.algorithm.TwoSum;
+import study.beans.MyBean;
 import study.config.TypeSafeConfiguration;
 
 import javax.annotation.PostConstruct;
 
+import org.hibernate.mapping.Array;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -48,7 +51,15 @@ public class StudyApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(StudyApplication.class, args);    // Spring Boot’s SpringApplication.run() method to launch an application
+//		System.out.println(ReverseInteger.reverse(-123));
+		
+		int[] result = TwoSum.twoSum(new int[] {15, 7, 11, 2}, 9);
+		System.out.println(result[0] + "," + result[1]);
+		
+		System.out.println("================");
+		System.out.println(Integer.MAX_VALUE);
+		System.out.println(Integer.MIN_VALUE);
+//		SpringApplication.run(StudyApplication.class, args);    // Spring Boot’s SpringApplication.run() method to launch an application
 	}
 	
 	@Bean

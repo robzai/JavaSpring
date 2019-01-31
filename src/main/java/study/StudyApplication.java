@@ -9,12 +9,22 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import study.JPA.Customer;
 import study.JPA.CustomerRepository;
+import study.JSON.Car;
+import study.JSON.Post;
 import study.algorithm.ReverseInteger;
 import study.algorithm.TwoSum;
 import study.beans.MyBean;
 import study.config.TypeSafeConfiguration;
+
+import java.io.IOException;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 
@@ -50,11 +60,19 @@ public class StudyApplication {
 //		return "typesave config: " + typeSafeConfiguration.getSecurity().getUsername();
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws JsonParseException, JsonMappingException, IOException {
 //		System.out.println(ReverseInteger.reverse(-123));
 		
-		int[] result = TwoSum.twoSum(new int[] {15, 7, 11, 2}, 9);
-		System.out.println(result[0] + "," + result[1]);
+//		int[] result = TwoSum.twoSum(new int[] {15, 7, 11, 2}, 9);
+//		System.out.println(result[0] + "," + result[1]);
+		
+		
+		String jsonPostArray = "[{\"id\":14186,\"title\":\"列治文宁静宜两房一厅3张床独立套间\",\"description\":\"第一次出租：里士满大别别墅二楼高雅阁二号路安静内街独立卫浴新家工具电话：604-780-3826\"}]";
+//		String jsonCarArray = "[{ \"color\" : \"Black\", \"type\" : \"BMW\" }, { \"color\" : \"Red\", \"type\" : \"FIAT\" }]";
+		ObjectMapper objectMapper = new ObjectMapper();
+//		List<Car> listCar = objectMapper.readValue(jsonCarArray, new TypeReference<List<Car>>(){});
+		List<Post> listCar = objectMapper.readValue(jsonPostArray, new TypeReference<List<Post>>(){});
+		System.out.println(listCar);
 		
 		System.out.println("================");
 		System.out.println(Integer.MAX_VALUE);
